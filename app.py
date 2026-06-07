@@ -1,9 +1,16 @@
 import streamlit as st
 import pickle
+import os
+import gdown
+
+# Download similarity.pkl if not present
+if not os.path.exists("artifacts/similarity.pkl"):
+    url = "https://drive.google.com/uc?export=download&id=1FK_CwMhrOuuv041M8GZicPFypQnoMgwV"
+    gdown.download(url, "artifacts/similarity.pkl", quiet=False)
 
 # Load data
-movies = pickle.load(open('artifacts/movies.pkl', 'rb'))
-similarity = pickle.load(open('artifacts/similarity.pkl', 'rb'))
+movies = pickle.load(open("artifacts/movies.pkl", "rb"))
+similarity = pickle.load(open("artifacts/similarity.pkl", "rb"))
 
 
 # Recommendation function
